@@ -1,0 +1,14 @@
+service:
+  server:
+    build: ./server
+    container_name: bookent_server
+    ports:
+      - 3000:3000
+    env_file:
+      - ./server/.env.development
+    volumes:
+      - ./server:/app
+      - server-node-modules:/app/node_modules
+
+volumes:
+  server-node-modules:
