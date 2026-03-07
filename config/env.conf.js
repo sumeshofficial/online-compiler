@@ -1,10 +1,9 @@
 import { z } from "zod";
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV || "development"}`
+});
 
-/**
- * Environment Variable Schema
- */
 const envSchema = z.object({
   NODE_ENV: z
     .enum(["development", "production", "test"])
@@ -20,9 +19,6 @@ const envSchema = z.object({
   LOG_LEVEL: z.string().min(1),
 });
 
-/**
- * Parse & Validate ENV
- */
 const parsed = envSchema.safeParse(process.env);
 
 if (!parsed.success) {
