@@ -6,11 +6,11 @@ import Select from '@mui/material/Select';
 import { useCompilerStore } from '../../store/compilerStore';
 
 export default function LanguageSelector() {
-  const language = useCompilerStore((state) => state.language);
-  const setLanguage = useCompilerStore((state) => state.setLanguage);
+  const { language, setLanguage, setCode } = useCompilerStore();
 
   const handleChange = (event) => {
     setLanguage(event.target.value);
+    setCode("");
   };
 
   return (
