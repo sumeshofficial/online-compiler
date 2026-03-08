@@ -17,6 +17,10 @@ export const runJs = (fileName) => {
         return resolve("Execution timed out (5 seconds)");
       }
 
+      if (error && error.code === 137) {
+        return resolve("Memory limit exceeded (128 MB)");
+      }
+
       if (stderr) {
         return resolve(stderr.trim());
       }

@@ -15,6 +15,10 @@ export const runCpp = (fileName) => {
         return resolve("Execution timed out (5 seconds)");
       }
 
+      if (error && error.code === 137) {
+        return resolve("Memory limit exceeded (128 MB)");
+      }
+
       if (err) {
         return resolve(err);
       }
