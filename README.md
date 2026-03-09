@@ -151,6 +151,27 @@ http://localhost:5173
 
 ## Docker Execution
 
+### Docker Setup (Required)
+
+This project executes user code inside **Docker containers** for security and isolation.
+
+Before running the project, make sure **Docker is installed and running** on your system.
+
+1. Install Docker from:  
+https://www.docker.com/get-started
+
+2. Start Docker Desktop.
+
+3. Pull the required runtime images to avoid cold start delays during the first execution:
+
+```
+docker pull node:18
+docker pull python:3.10
+docker pull gcc:latest
+```
+
+Pulling these images in advance ensures faster code execution when running the compiler locally.
+
 Code execution is handled inside Docker containers to ensure isolation.
 
 Example Docker run configuration:
